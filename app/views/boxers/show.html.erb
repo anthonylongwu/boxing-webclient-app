@@ -1,0 +1,10 @@
+<ul>
+  <li><%= @boxer.first_name %></li>
+  <li><%= @boxer.last_name %></li>
+  <li><%= @boxer.weight_class %></li>
+  <li><%= @boxer.current_record %></li>
+  <li><%= @boxer.titles_held %></li>
+  <li><%= @boxer.home_town %></li>
+</ul>
+
+<%= link_to "Delete Me", "/boxers#{params[:id]}", method: :delete %>

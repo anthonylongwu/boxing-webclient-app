@@ -1,0 +1,34 @@
+<%= form_tag "/boxers" do %>
+
+<div>
+  <%= label_tag "first_name" %>
+  <%= text_field_tag "first_name" %>
+</div>
+
+<div>
+  <%= label_tag "last_name" %>
+  <%= text_field_tag "last_name" %>
+</div>
+
+<div>
+  <%= label_tag "weight_class" %>
+  <%= text_field_tag "weight_class" %>
+</div>
+
+<div>
+  <%= label_tag "current_record" %>
+  <%= text_field_tag "current_record" %>
+</div>
+
+<div>
+  <%= label_tag "titles_held" %>
+  <%= text_field_tag "titles_held" %>
+</div>
+
+<div>
+  <%= label_tag "home_town" %>
+  <%= text_field_tag "home_town" %>
+</div>
+
+<%= submit_tag "Create Entry" %>
+<% end %>
