@@ -1,33 +1,35 @@
-<%= form_tag "/boxers/#{@boxer["id"]}", method: patch: do %>
+<h1>Edit Boxer</h1>
+
+<%= form_tag "/boxers/#{@boxer.id}", method: patch: do %>
 
 <div>
   <%= label_tag "first_name" %>
-  <%= text_field_tag "first_name", @boxer["first_name"] %>
+  <%= text_field_tag "first_name", @boxer.first_name %>
 </div>
 
 <div>
   <%= label_tag "last_name" %>
-  <%= text_field_tag "last_name", @boxer["last_name"] %>
+  <%= text_field_tag "last_name", @boxer.last_name %>
 </div>
 
 <div>
   <%= label_tag "weight_class" %>
-  <%= text_field_tag "weight_class", @boxer["weight_class"] %>
+  <%= text_field_tag "weight_class", @boxer.weight_class %>
 </div>
 
 <div>
   <%= label_tag "current_record" %>
-  <%= text_field_tag "current_record", @boxer["current_record" %>
+  <%= text_field_tag "current_record", @boxer.current_record %>
 </div>
 
 <div>
   <%= label_tag "titles_held" %>
-  <%= text_field_tag "titles_held", @boxer["titles_held"] %>
+  <%= text_field_tag "titles_held", @boxer.titles_held %>
 </div>
 
 <div>
   <%= label_tag "home_town" %>
-  <%= text_field_tag "home_town", @boxer["home_town"] %>
+  <%= text_field_tag "home_town", @boxer.home_town %>
 </div>
 
 <%= submit_tag "Edit Entry" %>

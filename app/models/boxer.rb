@@ -1,8 +1,9 @@
 class Boxer 
 
-attr_accessor :first_name, :last_name, :weight_class, :current_record, :titles_held, :home_town
+attr_accessor :id, :first_name, :last_name, :weight_class, :current_record, :titles_held, :home_town
 
   def initialize(hash)
+    @id = hash["id"]
     @first_name = hash["first_name"]
     @last_name = hash["last_name"]
     @weight_class = hash["weight_class"]
@@ -26,9 +27,23 @@ attr_accessor :first_name, :last_name, :weight_class, :current_record, :titles_h
     Boxer.new(boxer_hash)
   end
 
+  def self.create(attributes)
+    boxer_hash = Unirest.post("http://localhost:3000/boxers.json", headers: {"Accept" => "application/json"}, parameters: attributes).body
+    Boxer.new(boxer_hash)
+  end
+  
+  def update(attributes)
+    boxer_hash = Unirest.patch("http://localhost:3000/boxers/#{params[:id]}.json", headers: {
+    "Accept" => "application/json"}, parameters: attributes).body
+    Boxer.new(boxer_hash)
+  end
 
+  def destroy
+    Unirest.delete("http://localhost:3000/boxers/#{id}.json").body
+    redirect_to '/boxers'
+  end
 
-
+  
 
 
 

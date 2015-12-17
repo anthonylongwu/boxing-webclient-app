@@ -13,26 +13,33 @@ class BoxersController < ApplicationController
 
 
   def create
-    @boxer = Unirest.post("http://localhost:3000/boxers.json", headers: {
-      "Accept" => "application/json"}, parameters: {first_name: params[:first_name], last_name: params[:last_name], weight_class: params[:weight_class], current_record: params[:current_record], titles_held: params[:titles_held], home_town: params[:home_town]}).body
-
-    redirect_to "/boxers/#{@boxer["id"]}"
+    @boxer = Boxer.create(first_name: params[:first_name], last_name: params[:last_name], weight_class: params[:weight_class], current_record: params[:current_record], titles_held: params[:titles_held], home_town: params[:home_town])
+    redirect_to "/boxers/#{@boxer.id}"
   end
 
   def edit
-    @boxer = Unirest.get("http://localhost:3000/boxers/#{params[:id]}.json").body
+    @boxer = Boxer.find(params[:id])
   end
 
   def update
-    @boxer = Unirest.patch("http://localhost:3000/boxers/#{params[:id]}.json", headers: {
-      "Accept" => "application/json"}, parameters: {first_name: params[:first_name], last_name: params[:last_name], weight_class: params[:weight_class], current_record: params[:current_record], titles_held: params[:titles_held], home_town: params[:home_town]}).body
-        redirect_to "/boxers/#{@boxer["id"]}"
+
+    @boxer = Boxer.find(params[:id])
+    @boxer.update(first_name: params[:first_name], last_name: params[:last_name], weight_class: params[:weight_class], current_record: params[:current_record], titles_held: params[:titles_held], home_town: params[:home_town])
+    
+    redirect_to "/boxers/#{@boxer.id}"
   end
 
   def destroy
-    Unirest.delete("http://localhost:3000/boxers/#{params[:id]}.json").body
+    @boxer = Boxer.find(params[:id])
+    @boxer.destroy
+
+     Unirest.delete("http://localhost:3000/boxers/#{params[:id]}.json").body
     redirect_to "/boxers"
   end
+
+
+
+
 end
 
 
@@ -42,4 +49,3 @@ end
 
 
 
-#edit update destroy 
