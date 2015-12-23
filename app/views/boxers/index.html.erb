@@ -7,5 +7,14 @@
     <th>Titles Held</th>
     <th>Home Town</th>
   </tr>
-    <%= @boxers.each do |boxer| %>
-      
+    <% @boxers.each do |boxer| %>
+    <tr>
+    <td><%= boxer[:first_name]%></td>
+    <td><%= boxer[:last_name]%></td>
+    <td><%= boxer[:weight_class]%></td>
+    <td><%= boxer[:current_record]%></td>
+    <td><%= boxer[:titles_held]%></td>
+    <td><%= boxer[:home_town]%></td>
+    </tr>
+      <%end%>
+      </table>
